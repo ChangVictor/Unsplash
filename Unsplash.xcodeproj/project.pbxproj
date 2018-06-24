@@ -13,10 +13,10 @@
 		EF39E68320DF112500E577AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF39E68120DF112500E577AC /* Main.storyboard */; };
 		EF39E68520DF112700E577AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF39E68420DF112700E577AC /* Assets.xcassets */; };
 		EF39E68820DF112700E577AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF39E68620DF112700E577AC /* LaunchScreen.storyboard */; };
-		EF39E69020DF126C00E577AC /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E68F20DF126C00E577AC /* MainTabBarController.swift */; };
 		EF39E69920DF19BA00E577AC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E69820DF19BA00E577AC /* Photo.swift */; };
 		EF39E69B20DF220600E577AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E69A20DF220600E577AC /* User.swift */; };
 		EF39E69D20DF341100E577AC /* PhotoDataAcces.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E69C20DF341100E577AC /* PhotoDataAcces.swift */; };
+		EF39E69F20DF3C5700E577AC /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E69E20DF3C5700E577AC /* PhotoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +30,10 @@
 		EF39E68420DF112700E577AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF39E68720DF112700E577AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF39E68920DF112700E577AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EF39E68F20DF126C00E577AC /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EF39E69820DF19BA00E577AC /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		EF39E69A20DF220600E577AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EF39E69C20DF341100E577AC /* PhotoDataAcces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataAcces.swift; sourceTree = "<group>"; };
+		EF39E69E20DF3C5700E577AC /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				EF39E67F20DF112500E577AC /* ViewController.swift */,
-				EF39E68F20DF126C00E577AC /* MainTabBarController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -127,6 +126,7 @@
 		EF39E69420DF179F00E577AC /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				EF39E69E20DF3C5700E577AC /* PhotoService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 				EF39E67E20DF112500E577AC /* AppDelegate.swift in Sources */,
 				EF39E69B20DF220600E577AC /* User.swift in Sources */,
 				EF39E69D20DF341100E577AC /* PhotoDataAcces.swift in Sources */,
-				EF39E69020DF126C00E577AC /* MainTabBarController.swift in Sources */,
+				EF39E69F20DF3C5700E577AC /* PhotoService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
