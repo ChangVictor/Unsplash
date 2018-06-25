@@ -10,19 +10,24 @@ import Foundation
 
 class Photo {
 	
-	private var id: String?
-	private var created_at: Date?
-	private var updated_at: Date?
-	private var width: Int?
-	private var height: Int?
-	private var description: String?
-	private var urls: String?
-	private var user: String?
-	private var links: String?
-	private var profile_image: String?
-	private var instagram_username: String?
-	private var total_likes: Int?
-	private var total_photos: Int?
+	var id: String?
+	var created_at: Date?
+	var updated_at: Date?
+	var width: Int?
+	var height: Int?
+	var description: String?
+	var urls: String?
+	var raw: String?
+	var full: String?
+	var regular: String?
+	var small: String?
+	var thumb: String?
+	var user: String?
+	var links: String?
+	var profile_image: String?
+	var instagram_username: String?
+	var total_likes: Int?
+	var total_photos: Int?
 	
 	init(with dictionary: [String: AnyObject]) {
 		self.id = dictionary["id"] as? String ?? "no id set"
@@ -31,7 +36,15 @@ class Photo {
 		self.width = dictionary["width"] as? Int
 		self.height = dictionary["height"] as? Int
 		self.description = dictionary["description"] as? String ?? "No description"
-		self.urls = dictionary["urls"] as? String
+//		self.urls = dictionary["urls"] as? String
+		guard self.urls == dictionary["urls"] as? String,
+			self.raw == dictionary["raw"] as? String,
+			self.full == dictionary["full"] as? String,
+			self.regular == dictionary["regular"] as? String,
+			self.small == dictionary["small"] as? String,
+			self.thumb == dictionary["thumb"] as? String
+			else { return }
+	
 		self.user = dictionary["user"] as? String
 		self.links = dictionary["links"] as? String
 		self.profile_image = dictionary["profile_image"] as? String
@@ -40,3 +53,13 @@ class Photo {
 		self.total_photos = dictionary["total_photos"] as? Int
 	}
 }
+
+//class imageUrl {
+//
+//	private var raw: String?
+//	private var full: String?
+//	private var regular: String?
+//	private var small: String?
+//	private var thumb: String?
+//
+//}

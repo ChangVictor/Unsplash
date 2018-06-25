@@ -16,7 +16,8 @@ class PhotoService {
 		let photoDataAcces = PhotoDataAcces()
 		
 		photoDataAcces.getPhotosFromAPIQuery(query, offset: offset) { (response) in
-			
+			print("Data Acces termino de obtener las fotos")
+			completion(response)
 		}
 		
 	}

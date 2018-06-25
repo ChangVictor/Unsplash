@@ -24,7 +24,10 @@ class PhotoDataAcces {
 						let newPhoto = Photo(with: aDictionary)
 						photosArray.append(newPhoto)
 					}
-					
+					completion(photosArray)
+				} else {
+					completion([])
+					print("Error retrieving data")
 				}
 			}
 			
