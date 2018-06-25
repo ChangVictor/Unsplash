@@ -24,7 +24,6 @@ class ViewController: UIViewController {
 		return textField
 	}()
 	
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -32,7 +31,6 @@ class ViewController: UIViewController {
 		setupNavigationBarItems()
 		setupTextField()
 		setupSearchButton()
-
 	}
 	
 	func setBackgroundImage() {
@@ -102,6 +100,11 @@ class ViewController: UIViewController {
 			navigationController?.pushViewController(photoTableViewController, animated: true)
 			photoTableViewController.query = searchTextField.text
 			print("\(photoTableViewController.query ?? "no query")")
+			
+			let backItem = UIBarButtonItem()
+			backItem.title = ""
+			navigationItem.backBarButtonItem = backItem
+			navigationItem.backBarButtonItem?.tintColor = .white
 			
 		} else if searchTextField.text == "" {
 			print("No hay query ingresado")

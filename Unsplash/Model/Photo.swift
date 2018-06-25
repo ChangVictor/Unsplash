@@ -11,8 +11,8 @@ import Foundation
 class Photo {
 	
 	var id: String?
-	var created_at: Date?
-	var updated_at: Date?
+	var created_at: String?
+	var updated_at: String?
 	var width: Int?
 	var height: Int?
 	var description: String?
@@ -22,35 +22,37 @@ class Photo {
 	var regular: String?
 	var small: String?
 	var thumb: String?
-	var user: String?
+	var likes: Int?
+	var user: User?
 	var links: String?
 	var profile_image: String?
 	var instagram_username: String?
-	var total_likes: Int?
 	var total_photos: Int?
 	
 	init(with dictionary: [String: AnyObject]) {
 		self.id = dictionary["id"] as? String ?? "no id set"
-		self.created_at = dictionary["created_at"] as? Date
-		self.updated_at = dictionary["updated_at"] as? Date
-		self.width = dictionary["width"] as? Int
-		self.height = dictionary["height"] as? Int
+		self.created_at = dictionary["created_at"] as? String
+		self.updated_at = dictionary["updated_at"] as? String
+		self.width = dictionary["width"] as? Int ?? 0
+		self.height = dictionary["height"] as? Int ?? 0
 		self.description = dictionary["description"] as? String ?? "No description"
-//		self.urls = dictionary["urls"] as? String
-		guard self.urls == dictionary["urls"] as? String,
-			self.raw == dictionary["raw"] as? String,
-			self.full == dictionary["full"] as? String,
-			self.regular == dictionary["regular"] as? String,
-			self.small == dictionary["small"] as? String,
-			self.thumb == dictionary["thumb"] as? String
-			else { return }
-	
-		self.user = dictionary["user"] as? String
+		
+		if let urlDictionary = dictionary["urls"] as? [String: AnyObject] {
+			self.raw = urlDictionary["raw"] as? String
+			self.full = urlDictionary["full"] as? String
+			self.regular = urlDictionary["regular"] as? String
+			self.small = urlDictionary["small"] as? String
+			self.thumb = urlDictionary["thumb"] as? String
+		}
+		if let dictUser = dictionary["user"] as? [String: AnyObject]{
+			self.user = User(_with: dictUser)
+		}
 		self.links = dictionary["links"] as? String
 		self.profile_image = dictionary["profile_image"] as? String
 		self.instagram_username = dictionary["instagram_username"] as? String
-		self.total_likes = dictionary["total_likes"] as? Int
-		self.total_photos = dictionary["total_photos"] as? Int
+		self.likes = dictionary["likes"] as? Int ?? 0
+		self.total_photos = dictionary["total_photos"] as? Int ?? 0
+		
 	}
 }
 

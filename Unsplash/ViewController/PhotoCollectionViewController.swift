@@ -21,21 +21,20 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 		collectionView?.backgroundColor = UIColor.rgb(red: 35, green: 35, blue: 35)
 		collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: cellId)
 		setupNavigationItems()
-		
+
 		let service = PhotoService()
 		guard let safeQuery = query else { return }
 		service.searchByQuery(query: safeQuery, offset: 0) { (photos) in
 			self.photos = photos
 			self.collectionView?.reloadData()
 		}
-
-		
-		
-		
     }
 	
 	func setupNavigationItems() {
-			navigationItem.title = query
+		self.navigationController?.navigationBar.prefersLargeTitles = true
+
+		navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+		navigationItem.title = query
 	}
 
     override func didReceiveMemoryWarning() {
@@ -43,10 +42,24 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
         // Dispose of any resources that can be recreated.
     }
 	
+
+	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: view.frame.width, height: 200)
+		var height: CGFloat = 40 + 8 + 8 //username userprofileimageview
+		height += view.frame.width
+		height += 50
+		height += 60
+		
+		return CGSize(width: view.frame.width, height: height)
 	}
 
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		if self.isMovingFromParentViewController {
+			navigationController?.navigationBar.prefersLargeTitles = false
+		}
+	}
     /*
     // MARK: - Navigation
 
@@ -64,7 +77,6 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return photos.count
@@ -75,12 +87,9 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 		
 		if let photoCell = cell as? PhotoCell {
 			photoCell.setupPhoto(photo: photos[indexPath.item])
-		}
 
-//		let photoCell = self.photos[indexPath.item]
-//		cell.photo = photoCell
-		
-		
+		}
+	
         return cell
     }
 
