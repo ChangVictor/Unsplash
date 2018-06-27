@@ -24,8 +24,7 @@ class Photo {
 	var thumb: String?
 	var likes: Int?
 	var user: User?
-	var links: String?
-	var profile_image: String?
+	var profile_small: String?
 	var instagram_username: String?
 	var total_photos: Int?
 	
@@ -46,9 +45,8 @@ class Photo {
 		}
 		if let dictUser = dictionary["user"] as? [String: AnyObject]{
 			self.user = User(_with: dictUser)
+			self.small = dictUser["small"] as? String ?? ""
 		}
-		self.links = dictionary["links"] as? String
-		self.profile_image = dictionary["profile_image"] as? String
 		self.instagram_username = dictionary["instagram_username"] as? String
 		self.likes = dictionary["likes"] as? Int ?? 0
 		self.total_photos = dictionary["total_photos"] as? Int ?? 0
