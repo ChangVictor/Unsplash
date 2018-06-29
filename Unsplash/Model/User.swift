@@ -33,9 +33,10 @@ class User {
 		self.twitter_username = dictionary["twitter_username"] as? String ?? ""
 		self.portfolio_url = dictionary["portfolio_url"] as? String ?? ""
 		self.bio = dictionary["bio"] as? String ?? ""
+		// de donde pido el profile image?
 		if let profileInfo = dictionary["profile_image"] as? [String:AnyObject] {
 			self.small = profileInfo["small"] as? String
-			self.medium = profileInfo["medium"] as? String
+			self.medium = profileInfo["medium"] as? String ?? ""
 			self.large = profileInfo["large"] as? String
 		}
 	}

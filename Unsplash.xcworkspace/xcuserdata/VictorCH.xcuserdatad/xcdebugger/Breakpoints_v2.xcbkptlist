@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Unsplash/Service/PhotoService.swift"
-            timestampString = "551627058.499314"
+            timestampString = "551820331.775671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "searchByQuery(query:offset:completion:)"
+            landmarkName = "searchByQuery(query:page:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,14 +25,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Unsplash/Data Acces Object/PhotoDataAcces.swift"
-            timestampString = "551656641.7561539"
+            filePath = "Unsplash/ViewController/PhotoCell.swift"
+            timestampString = "551835908.837684"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "getPhotosFromAPIQuery(_:offset:completion:)"
-            landmarkType = "7">
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "PhotoCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "variable initialization expression of Unsplash.PhotoCell.photoImageView : __ObjC.UIImageView"
+                  moduleName = "Unsplash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/VictorCH/Desktop/DH.iOS/Entregable3/Unsplash/Unsplash/ViewController/PhotoCell.swift"
+                  timestampString = "551820331.944227"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __ObjC.UIImageView in variable initialization expression of Unsplash.PhotoCell.photoImageView : __ObjC.UIImageView"
+                  moduleName = "Unsplash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/VictorCH/Desktop/DH.iOS/Entregable3/Unsplash/Unsplash/ViewController/PhotoCell.swift"
+                  timestampString = "551820331.945944"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unsplash.PhotoCell.photoImageView.getter : __ObjC.UIImageView"
+                  moduleName = "Unsplash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/VictorCH/Desktop/DH.iOS/Entregable3/Unsplash/Unsplash/ViewController/PhotoCell.swift"
+                  timestampString = "551820331.948125"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "109">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Unsplash/ViewController/PhotoCell.swift"
+            timestampString = "551835908.838035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "PhotoCell"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -41,14 +104,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Unsplash/ViewController/ViewController.swift"
-            timestampString = "551656641.756243"
+            filePath = "Unsplash/ViewController/PhotoCell.swift"
+            timestampString = "551835908.838275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "handleSearchPress()"
-            landmarkType = "7">
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "userNameLabel"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

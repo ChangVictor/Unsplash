@@ -11,11 +11,11 @@ import Foundation
 class PhotoService {
 	
 	
-	func searchByQuery(query: String, offset: Int, completion: @escaping ([Photo]) -> ()) {
+	func searchByQuery(query: String, page: Int, completion: @escaping ([Photo]) -> ()) {
 		
 		let photoDataAcces = PhotoDataAcces()
 		
-		photoDataAcces.getPhotosFromAPIQuery(query, offset: offset) { (response) in
+		photoDataAcces.getPhotosFromAPIQuery(query, page: page) { (response) in
 			print("Data Acces termino de obtener las fotos")
 			completion(response)
 		}

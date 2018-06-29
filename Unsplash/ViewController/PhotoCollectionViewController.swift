@@ -8,11 +8,27 @@
 
 import UIKit
 
-class PhotoCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class PhotoCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, PhotoCellDelegate {
+	func didTapPhoto(image: UIImageView) {
+		let photoDetailViewController = PhotoDetailViewController()
+//		navigationController?.present(photoDetailViewController, animated: true)
+		navigationController?.pushViewController(photoDetailViewController, animated: true)
+		setupBackButton()
+	}
+	
+	func didTapProfile(profile: UIButton) {
+		print("tap Profile")
+		let profileViewController = ProfileViewController()
+		navigationController?.pushViewController(profileViewController, animated: true)
+		
+		setupBackButton()
+		}
 	
 	let cellId = "cellId"
 	var query: String?
+	var photo: Photo?
 	var photos: [Photo] = []
+	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +40,7 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 
 		let service = PhotoService()
 		guard let safeQuery = query else { return }
-		service.searchByQuery(query: safeQuery, offset: 0) { (photos) in
+		service.searchByQuery(query: safeQuery, page: 0) { (photos) in
 			self.photos = photos
 			self.collectionView?.reloadData()
 		}
@@ -32,7 +48,6 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 	
 	func setupNavigationItems() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
-
 		navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
 		navigationItem.title = query
 	}
@@ -42,57 +57,55 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
         // Dispose of any resources that can be recreated.
     }
 	
-
-	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		var height: CGFloat = 40 + 8 + 8 //username userprofileimageview
 		height += view.frame.width
-		height += 50
-		height += 60
-		
+		height += 50 // para los stats
 		return CGSize(width: view.frame.width, height: height)
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		
 		if self.isMovingFromParentViewController {
 			navigationController?.navigationBar.prefersLargeTitles = false
 		}
 	}
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return photos.count
     }
-
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId	, for: indexPath)
 		
 		if let photoCell = cell as? PhotoCell {
-			photoCell.setupPhoto(photo: photos[indexPath.item])
-
+			photoCell.setupData(photo: photos[indexPath.item], delegate: self)
 		}
-	
+		
+		if indexPath.item == photos.count - 2{
+			loadNextPage()
+		}
+		
         return cell
     }
+	// Esto va aca?
+	private func loadNextPage() {
+		let service = PhotoService()
+		service.searchByQuery(query: query!, page: photos.count) { (photos) in
+			self.photos.append(contentsOf: photos)
+			self.collectionView?.reloadData()
+		}
+	}
 
-
+	fileprivate func setupBackButton() {
+		let backItem = UIBarButtonItem()
+		backItem.title = ""
+		navigationItem.backBarButtonItem = backItem
+		navigationItem.backBarButtonItem?.tintColor = .white
+	}
 
 }
