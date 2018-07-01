@@ -114,9 +114,9 @@ class ProfileViewController: UIViewController {
 		stackView.backgroundColor = .red
 		view.addSubview(stackView)
 
-		stackView.anchor(top: view.centerYAnchor, left: nil, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+		stackView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 		stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-		stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+		stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 100).isActive = true
 	}
 	
 	func setupNavigationItems() {
