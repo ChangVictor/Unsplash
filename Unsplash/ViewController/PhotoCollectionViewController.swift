@@ -20,7 +20,8 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 		print("tap Profile")
 		let profileViewController = ProfileViewController()
 		navigationController?.pushViewController(profileViewController, animated: true)
-		
+		navigationController?.navigationBar.prefersLargeTitles = false
+
 		setupBackButton()
 		}
 	

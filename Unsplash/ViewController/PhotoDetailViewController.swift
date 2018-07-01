@@ -19,18 +19,19 @@ class PhotoDetailViewController: UIViewController {
 		self.view.backgroundColor = UIColor.rgb(red: 35, green: 35, blue: 35)
 
 		//TODO: Separar en funciones y agregar contraints en cada funcion
-		detailPhotoImageView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(detailUserProfileImageView)
 		view.addSubview(detailUserNameLabel)
 		view.addSubview(detailPhotoImageView)
 		view.addSubview(detailBioLabel)
-		view.addSubview(detailBioLabel)
-		detailPhotoImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+		setupLayouts()
+
 	}
 	
 	let detailUserProfileImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFill
 		imageView.clipsToBounds = true
+		imageView.backgroundColor = .red
 		return imageView
 	}()
 	
@@ -56,6 +57,8 @@ class PhotoDetailViewController: UIViewController {
 	
 	let detailBioLabel: UILabel = {
 		let label = UILabel()
+		label.text = "user bio here"
+		label.textColor = .white
 		label.numberOfLines = 0
 		return label
 	}()
@@ -73,6 +76,23 @@ class PhotoDetailViewController: UIViewController {
 		}
 		detailUserNameLabel.text = photo?.user?.username ?? "userName"
 		cellDelegate = delegate
+	}
+	
+	func setupLayouts() {
+	
+		detailUserProfileImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
+		detailUserProfileImageView.layer.cornerRadius = 40 / 2
+		
+		detailUserNameLabel.anchor(top: detailUserProfileImageView.topAnchor, left: detailUserProfileImageView.rightAnchor, bottom: detailUserProfileImageView.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+		
+		detailPhotoImageView.anchor(top: detailUserProfileImageView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+		detailPhotoImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4).isActive = true
+		detailPhotoImageView.widthAnchor.constraint(equalTo: detailPhotoImageView.heightAnchor, multiplier: 1).isActive = true
+		detailPhotoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+		
+		detailBioLabel.anchor(top: detailPhotoImageView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+		detailBioLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+		
 	}
 
 }

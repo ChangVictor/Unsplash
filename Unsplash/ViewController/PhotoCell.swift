@@ -55,6 +55,7 @@ class PhotoCell: UICollectionViewCell {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFill
 		imageView.clipsToBounds = true
+		
 		return imageView
 	}()
 
@@ -79,6 +80,18 @@ class PhotoCell: UICollectionViewCell {
 //
 //		return label
 //	}()
+	let dateLabel: UILabel = {
+		let label = UILabel()
+		label.font = UIFont.boldSystemFont(ofSize: 13)
+		label.textColor = UIColor.rgb(red: 40, green: 40, blue: 40)
+		label.text = "date"
+		return label
+	}()
+	let dateBackground: UILabel = {
+		let label = UILabel()
+		label.backgroundColor = UIColor.rgb(red: 229, green: 229, blue: 229).withAlphaComponent(0.5)
+		return label
+	}()
 	
 	let photoImageView: UIImageView = {
 		let imageView = UIImageView() //CustomImageView
@@ -119,14 +132,18 @@ class PhotoCell: UICollectionViewCell {
 		addSubview(photoImageView)
 		addSubview(userProfileImageView)
 		addSubview(userNameLabel)
+		addSubview(dateBackground)
+		addSubview(dateLabel)
 		
-		userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
-		userProfileImageView.layer.cornerRadius = 40 / 2 // 40 porque el width y heigth son 40
+		userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: photoImageView.topAnchor, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 30, height: 0)
+		userProfileImageView.layer.cornerRadius = 30 / 2 // 40 porque el width y heigth son 40
+		userProfileImageView.heightAnchor.constraint(equalTo: userProfileImageView.widthAnchor, multiplier: 1).isActive = true
 		
 		userNameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: photoImageView.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-		photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+		photoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 50, paddingLeft: 0, paddingBottom: 25, paddingRight: 0, width: 0, height: 0)
 		photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true // le doy un anchor "especial para que no tome los 60 de la description"
-		
+		dateLabel.anchor(top: nil, left: photoImageView.leftAnchor, bottom: photoImageView.bottomAnchor, right: photoImageView.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 0, height: 30)
+		dateBackground.anchor(top: nil, left: photoImageView.leftAnchor, bottom: photoImageView.bottomAnchor, right: photoImageView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 0, width: 0, height: 30)
 		
 		userNameLabel.addTarget(self, action: #selector(profilePress), for: .touchUpInside)
 		
@@ -139,7 +156,7 @@ class PhotoCell: UICollectionViewCell {
 	
 	fileprivate func setupStackView() {
 		let stackView = UIStackView(arrangedSubviews: [viewsLabel, likeLabel, downloadsLabel])
-		stackView.distribution = .fillEqually
+		stackView.distribution = .equalCentering
 		stackView.backgroundColor = .gray
 		addSubview(stackView)
 		stackView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 50)
