@@ -17,21 +17,9 @@ protocol PhotoCellDelegate {
 class PhotoCell: UICollectionViewCell {
 	
 	var cellDelegate: PhotoCellDelegate?
+	var profileViewController = ProfileViewController()
 	
-	var photo: Photo? {
-		didSet {
-//			if let photoUrl = photo?.thumb {
-//				let url = URL(string: photoUrl)
-//			}
-//			guard let photoImageUrl = photo?.thumb else { return }
-//			photoImageView.loadImage(urlString: photoImageUrl)
-//			print("test")
-			
-//			userNameLabel.text = photo?.user?.username
-//			userNameLabel.text = "userName"
-//			userNameLabel.text = photo?.user?.username
-		}
-	}
+	var photo: Photo?
 	
 	func setupData(photo: Photo?, delegate: PhotoCellDelegate) {
 
@@ -46,6 +34,12 @@ class PhotoCell: UICollectionViewCell {
 			let urlProfilePic = URL(string: profileImageUrl)
 			userProfileImageView.kf.setImage(with: urlProfilePic)
 		}
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+		guard let date = dateFormatter.date(from: (photo?.created_at)!) else { return }
+		dateFormatter.dateFormat = "EEE, MMM d, yyyy - h:mm a"
+		dateLabel.text = dateFormatter.string(from: date)
+	
 		userNameLabel.setTitle("\(photo?.user?.username ?? "userName")", for: .normal)
 		cellDelegate = delegate
 		
@@ -80,7 +74,7 @@ class PhotoCell: UICollectionViewCell {
 //
 //		return label
 //	}()
-	let dateLabel: UILabel = {
+	var dateLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.boldSystemFont(ofSize: 13)
 		label.textColor = UIColor.rgb(red: 40, green: 40, blue: 40)
@@ -101,30 +95,7 @@ class PhotoCell: UICollectionViewCell {
 		return imageView
 	}()
 	
-	let likeLabel: UILabel = {
-		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 13)
-		label.textColor = UIColor.rgb(red: 230, green: 230, blue: 230)
-		label.text = "likes: "
-		
-		return label
-	}()
-	
-	let downloadsLabel: UILabel = {
-		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 13)
-		label.text = "downloads: "
-		label.textColor = UIColor.rgb(red: 230, green: 230, blue: 230)
-		return label
-	}()
-	
-	let viewsLabel: UILabel = {
-		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 13)
-		label.text = "views: "
-		label.textColor = UIColor.rgb(red: 230, green: 230, blue: 230)
-		return label
-	}()
+
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -141,7 +112,7 @@ class PhotoCell: UICollectionViewCell {
 		
 		userNameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: photoImageView.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 		photoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 50, paddingLeft: 0, paddingBottom: 25, paddingRight: 0, width: 0, height: 0)
-		photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true // le doy un anchor "especial para que no tome los 60 de la description"
+//		photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
 		dateLabel.anchor(top: nil, left: photoImageView.leftAnchor, bottom: photoImageView.bottomAnchor, right: photoImageView.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 0, height: 30)
 		dateBackground.anchor(top: nil, left: photoImageView.leftAnchor, bottom: photoImageView.bottomAnchor, right: photoImageView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 0, width: 0, height: 30)
 		
@@ -150,19 +121,16 @@ class PhotoCell: UICollectionViewCell {
 		let tap = UITapGestureRecognizer(target: self, action: #selector(imageDetailTapped))
 		photoImageView.addGestureRecognizer(tap)
 		
-		setupStackView()
 		//profileNameTapped()
 	}
 	
-	fileprivate func setupStackView() {
-		let stackView = UIStackView(arrangedSubviews: [viewsLabel, likeLabel, downloadsLabel])
-		stackView.distribution = .equalCentering
-		stackView.backgroundColor = .gray
-		addSubview(stackView)
-		stackView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 50)
-		}
 	@objc func profilePress() {
 		cellDelegate?.didTapProfile(profile: userNameLabel)
+				if let selectedName = photo?.user?.username {
+				profileViewController.userData = selectedName
+				} else {
+					print("error retrieving userName")
+				}
 		print("profile tapped")
 	}
 	

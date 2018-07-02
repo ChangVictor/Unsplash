@@ -18,7 +18,7 @@ class Statistics {
 	var likes: Int?
 	var totalLikes: Int?
 	
-	init(with dictionary: [String: AnyObject]) {
+	init(_with dictionary: [String: AnyObject]) {
 		self.id = dictionary["id"] as? String ?? ""
 		if let downloadsDictionary = dictionary["downloads"] as? [String: AnyObject] {
 			totalDownloads = downloadsDictionary["total"] as? Int ?? 0

@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 	// * declaro el textfield afuera para poder usarlo como contraint del boton
 	let searchTextField: UITextField = {
 		let textField = UITextField()
-		textField.placeholder = "Buscar fotos..."
+		textField.placeholder = "Qué quieres buscar?"
 		textField.backgroundColor = UIColor(white: 1, alpha: 0.8)
 		textField.borderStyle = .roundedRect
 		textField.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +29,11 @@ class ViewController: UIViewController {
 		setupNavigationBarItems()
 		setupTextField()
 		setupSearchButton()
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
 	}
 	
 	func setBackgroundImage() {
@@ -63,9 +68,9 @@ class ViewController: UIViewController {
 	func setupTextField(){
 		view.addSubview(searchTextField)
 		NSLayoutConstraint.activate([
-			searchTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
-			searchTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-			searchTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
+			searchTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+			searchTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+			searchTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
 			searchTextField.heightAnchor.constraint(equalToConstant: 40)
 			])
 	}
@@ -84,8 +89,8 @@ class ViewController: UIViewController {
 		}()
 		self.view.addSubview(searchButton)
 		NSLayoutConstraint.activate([
-			searchButton.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 30),
-			searchButton.widthAnchor.constraint(equalToConstant: 90),
+			searchButton.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
+			searchButton.widthAnchor.constraint(equalTo: searchTextField.widthAnchor, multiplier: 1),
 			searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 		])
 	}

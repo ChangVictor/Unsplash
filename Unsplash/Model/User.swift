@@ -15,14 +15,15 @@ class User {
 	var name: String?
 	var first_name: String?
 	var last_name: String?
-	var twitter_username: String?
-	var portfolio_url: String?
+	var followers_count: Int?
+	var following_count: Int?
 	var bio: String?
+	var downloads: Int?
 	var profile_image: String?
 	var small: String?
 	var medium: String?
 	var large: String?
-	var links: String?
+	var likes: Int?
 	
 	init(_with dictionary: [String: AnyObject]) {
 		self.id = dictionary["id"] as? String ?? "no id set"
@@ -30,9 +31,11 @@ class User {
 		self.name = dictionary["name"] as? String ?? "no name"
 		self.first_name = dictionary["first_name"] as? String ?? "no first name"
 		self.last_name = dictionary["last_name"] as? String ?? "no last name"
-		self.twitter_username = dictionary["twitter_username"] as? String ?? ""
-		self.portfolio_url = dictionary["portfolio_url"] as? String ?? ""
+		self.followers_count = dictionary["followers_count"] as? Int ?? 0
+		self.following_count = dictionary["following_count"] as? Int ?? 0
+		self.downloads = dictionary["downloads"] as? Int ?? 00
 		self.bio = dictionary["bio"] as? String ?? ""
+		self.likes = dictionary["total_likes"] as? Int? ?? 0
 		// de donde pido el profile image?
 		if let profileInfo = dictionary["profile_image"] as? [String:AnyObject] {
 			self.small = profileInfo["small"] as? String

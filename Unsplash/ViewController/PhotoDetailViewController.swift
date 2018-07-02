@@ -13,8 +13,24 @@ class PhotoDetailViewController: UIViewController {
 	var photoService: PhotoService?
 	var cellDelegate: PhotoCellDelegate?
 	var photo: Photo?
+	var user: User?
+	var photoID: String = ""
+	var statistics: Statistics?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		let service = StatsService()
+		service.getStats(id: photoID) { (statistics) in
+			self.statistics = statistics
+			self.likeLabel.text = "\(statistics.totalLikes ?? 0)"
+			self.downloadsLabel.text = "\(statistics.totalDownloads ?? 0)"
+			self.viewsLabel.text = "\(statistics.totalViews ?? 0)"
+		}
+		
+		if let user = user {
+			detailBioLabel.text = user.bio
+		}
 		
 		self.view.backgroundColor = UIColor.rgb(red: 35, green: 35, blue: 35)
 
@@ -24,7 +40,7 @@ class PhotoDetailViewController: UIViewController {
 		view.addSubview(detailPhotoImageView)
 		view.addSubview(detailBioLabel)
 		setupLayouts()
-
+		setupStackView()
 	}
 	
 	let detailUserProfileImageView: UIImageView = {
@@ -62,6 +78,31 @@ class PhotoDetailViewController: UIViewController {
 		label.numberOfLines = 0
 		return label
 	}()
+	
+	let likeLabel: UILabel = {
+		let label = UILabel()
+		label.font = UIFont.boldSystemFont(ofSize: 13)
+		label.textColor = UIColor.rgb(red: 230, green: 230, blue: 230)
+		label.text = "likes: "
+		
+		return label
+	}()
+	
+	let downloadsLabel: UILabel = {
+		let label = UILabel()
+		label.font = UIFont.boldSystemFont(ofSize: 13)
+		label.text = "downloads: "
+		label.textColor = UIColor.rgb(red: 230, green: 230, blue: 230)
+		return label
+	}()
+	
+	let viewsLabel: UILabel = {
+		let label = UILabel()
+		label.font = UIFont.boldSystemFont(ofSize: 13)
+		label.text = "views: "
+		label.textColor = UIColor.rgb(red: 230, green: 230, blue: 230)
+		return label
+	}()
 
 	func setupData(photo: Photo?, delegate: PhotoCellDelegate) {
 //		if let photImageUrl = photo?.regular {
@@ -90,9 +131,15 @@ class PhotoDetailViewController: UIViewController {
 		detailPhotoImageView.widthAnchor.constraint(equalTo: detailPhotoImageView.heightAnchor, multiplier: 1).isActive = true
 		detailPhotoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
 		
-		detailBioLabel.anchor(top: detailPhotoImageView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+		detailBioLabel.anchor(top: detailPhotoImageView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 		detailBioLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-		
 	}
-
+	
+	fileprivate func setupStackView() {
+		let stackView = UIStackView(arrangedSubviews: [viewsLabel, likeLabel, downloadsLabel])
+		stackView.distribution = .equalCentering
+		stackView.backgroundColor = .gray
+		view.addSubview(stackView)
+		stackView.anchor(top: detailPhotoImageView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 50)
+	}
 }

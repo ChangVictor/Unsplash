@@ -9,6 +9,13 @@
 import UIKit
 
 class PhotoCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, PhotoCellDelegate {
+	
+	let cellId = "cellId"
+	var query: String?
+	var photo: Photo?
+	var photos: [Photo] = []
+	var profileViewController = ProfileViewController()
+	
 	func didTapPhoto(image: UIImageView) {
 		let photoDetailViewController = PhotoDetailViewController()
 //		navigationController?.present(photoDetailViewController, animated: true)
@@ -21,14 +28,15 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 		let profileViewController = ProfileViewController()
 		navigationController?.pushViewController(profileViewController, animated: true)
 		navigationController?.navigationBar.prefersLargeTitles = false
-
+		
+//		if let selectedName = photo?.user?.username {
+//		profileViewController.userData = selectedName
+//		} else {
+//			print("error retrieving userName")
+//		}
+		
 		setupBackButton()
 		}
-	
-	let cellId = "cellId"
-	var query: String?
-	var photo: Photo?
-	var photos: [Photo] = []
 	
 	
     override func viewDidLoad() {
@@ -43,6 +51,7 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 		guard let safeQuery = query else { return }
 		service.searchByQuery(query: safeQuery, page: 0) { (photos) in
 			self.photos = photos
+			
 			self.collectionView?.reloadData()
 		}
     }
@@ -59,9 +68,8 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
     }
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		var height: CGFloat = 40 + 8 + 8 //username userprofileimageview
+		var height: CGFloat = 30 + 8 + 8 //username userprofileimageview
 		height += view.frame.width
-		height += 50 // para los stats
 		return CGSize(width: view.frame.width, height: height)
 	}
 
@@ -82,15 +90,12 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId	, for: indexPath)
-		
 		if let photoCell = cell as? PhotoCell {
 			photoCell.setupData(photo: photos[indexPath.item], delegate: self)
 		}
-		
 		if indexPath.item == photos.count - 2{
 			loadNextPage()
 		}
-		
         return cell
     }
 	// Esto va aca?

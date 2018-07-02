@@ -20,6 +20,8 @@
 		EF58F13120E26BED0075BED9 /* StatsDataAcces.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF58F13020E26BED0075BED9 /* StatsDataAcces.swift */; };
 		EF58F13320E26C030075BED9 /* UserDataAcces.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF58F13220E26C030075BED9 /* UserDataAcces.swift */; };
 		EF6BB11A20E2D9CE00EBF716 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6BB11920E2D9CE00EBF716 /* Statistics.swift */; };
+		EF9C6E8720E9156A00A15C7E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9C6E8620E9156A00A15C7E /* UserService.swift */; };
+		EF9C6E8920E9A15600A15C7E /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9C6E8820E9A15600A15C7E /* StatsService.swift */; };
 		EFACE9B220E44DDA003D1BF5 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFACE9B120E44DDA003D1BF5 /* PhotoDetailViewController.swift */; };
 		EFCB3B7420E4084B00AAF6C4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCB3B7320E4084B00AAF6C4 /* ProfileViewController.swift */; };
 		EFF6D5C920DFB82500A04584 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF6D5C820DFB82500A04584 /* Extension.swift */; };
@@ -46,6 +48,8 @@
 		EF58F13020E26BED0075BED9 /* StatsDataAcces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDataAcces.swift; sourceTree = "<group>"; };
 		EF58F13220E26C030075BED9 /* UserDataAcces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataAcces.swift; sourceTree = "<group>"; };
 		EF6BB11920E2D9CE00EBF716 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		EF9C6E8620E9156A00A15C7E /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		EF9C6E8820E9A15600A15C7E /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 		EFACE9B120E44DDA003D1BF5 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		EFCB3B7320E4084B00AAF6C4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EFF6D5C820DFB82500A04584 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				EF39E69E20DF3C5700E577AC /* PhotoService.swift */,
+				EF9C6E8620E9156A00A15C7E /* UserService.swift */,
+				EF9C6E8820E9A15600A15C7E /* StatsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -167,6 +173,7 @@
 		EF39E69620DF17AF00E577AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EF39E69820DF19BA00E577AC /* Photo.swift */,
 				EF39E69A20DF220600E577AC /* User.swift */,
 				EF6BB11920E2D9CE00EBF716 /* Statistics.swift */,
 			);
@@ -177,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				EF39E67D20DF112500E577AC /* AppDelegate.swift */,
-				EF39E69820DF19BA00E577AC /* Photo.swift */,
 				EFF6D5C820DFB82500A04584 /* Extension.swift */,
 			);
 			path = Main;
@@ -297,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF9C6E8920E9A15600A15C7E /* StatsService.swift in Sources */,
 				EF6BB11A20E2D9CE00EBF716 /* Statistics.swift in Sources */,
 				EF39E69920DF19BA00E577AC /* Photo.swift in Sources */,
 				EFF6D5D320E077B400A04584 /* PhotoCell.swift in Sources */,
@@ -309,6 +316,7 @@
 				EF39E67E20DF112500E577AC /* AppDelegate.swift in Sources */,
 				EF39E69B20DF220600E577AC /* User.swift in Sources */,
 				EF39E69D20DF341100E577AC /* PhotoDataAcces.swift in Sources */,
+				EF9C6E8720E9156A00A15C7E /* UserService.swift in Sources */,
 				EF39E69F20DF3C5700E577AC /* PhotoService.swift in Sources */,
 				EFF6D5D520E08DE500A04584 /* CustomImageView.swift in Sources */,
 				EF58F13120E26BED0075BED9 /* StatsDataAcces.swift in Sources */,

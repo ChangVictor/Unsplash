@@ -11,13 +11,15 @@ import Alamofire
 
 class UserDataAcces {
 	
-	func getUserProfileFromAPI(_ username: String, completion: ([User]) -> ()) {
+	func getUserProfileFromAPI(_ username: String, completion: @escaping (User) -> ()) {
 		
-		let urlForStats = "https://api.unsplash.com/users/\(username)/statistics&clinet_id=3191679cf58cd03731de7a82e3c2ca92e667448b6c892673787d191a03932068"
-		Alamofire.request(urlForStats).responseJSON { (response) in
+		let urlForUser = "https://api.unsplash.com/users/\(username)?client_id=090e1bedb6a26dec7b7b0c339fc0b8b70218f9a43264237390173fc0af756497"
+		Alamofire.request(urlForUser).responseJSON { (response) in
 			
 			if let mainDictionary = response.result.value as? [String: AnyObject] {
-				
+				let anUser = User(_with: mainDictionary)
+				completion(anUser)
+				print("Se obtuvieron los datos del usuario \(anUser)")
 			}
 			
 		}
