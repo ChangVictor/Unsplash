@@ -17,6 +17,7 @@ class User {
 	var last_name: String?
 	var followers_count: Int?
 	var following_count: Int?
+	var total_photos: Int?
 	var bio: String?
 	var downloads: Int?
 	var profile_image: String?
@@ -33,6 +34,7 @@ class User {
 		self.last_name = dictionary["last_name"] as? String ?? "no last name"
 		self.followers_count = dictionary["followers_count"] as? Int ?? 0
 		self.following_count = dictionary["following_count"] as? Int ?? 0
+		self.total_photos = dictionary["total_photos"] as? Int ?? 0
 		self.downloads = dictionary["downloads"] as? Int ?? 00
 		self.bio = dictionary["bio"] as? String ?? ""
 		self.likes = dictionary["total_likes"] as? Int? ?? 0

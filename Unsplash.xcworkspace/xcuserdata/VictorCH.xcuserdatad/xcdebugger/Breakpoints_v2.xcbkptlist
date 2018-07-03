@@ -2,4 +2,134 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Unsplash/ViewController/PhotoCollectionViewController.swift"
+            timestampString = "552344168.928123"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "didTapPhoto(photo:stats:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Unsplash/ViewController/PhotoDetailViewController.swift"
+            timestampString = "552343928.385843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unsplash.PhotoDetailViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Unsplash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/VictorCH/Desktop/DH.iOS/Entregable3/Unsplash/Unsplash/ViewController/PhotoDetailViewController.swift"
+                  timestampString = "552343928.541795"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Unsplash.Statistics) -&gt; () in Unsplash.PhotoDetailViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Unsplash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/VictorCH/Desktop/DH.iOS/Entregable3/Unsplash/Unsplash/ViewController/PhotoDetailViewController.swift"
+                  timestampString = "552343928.544238"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Unsplash/ViewController/PhotoDetailViewController.swift"
+            timestampString = "552343928.386095"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unsplash.PhotoDetailViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Unsplash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/VictorCH/Desktop/DH.iOS/Entregable3/Unsplash/Unsplash/ViewController/PhotoDetailViewController.swift"
+                  timestampString = "552343928.552865"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Unsplash.Statistics) -&gt; () in Unsplash.PhotoDetailViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Unsplash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/VictorCH/Desktop/DH.iOS/Entregable3/Unsplash/Unsplash/ViewController/PhotoDetailViewController.swift"
+                  timestampString = "552343928.554922"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Unsplash/ViewController/PhotoCollectionViewController.swift"
+            timestampString = "552344168.9286439"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "didTapProfile(profile:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

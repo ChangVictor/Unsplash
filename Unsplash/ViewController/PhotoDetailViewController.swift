@@ -7,29 +7,43 @@
 //
 
 import UIKit
+import Alamofire
+import Kingfisher
 
 class PhotoDetailViewController: UIViewController {
 
 	var photoService: PhotoService?
 	var cellDelegate: PhotoCellDelegate?
+	
 	var photo: Photo?
 	var user: User?
-	var photoID: String = ""
+	var stats: String = ""
 	var statistics: Statistics?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		let service = StatsService()
-		service.getStats(id: photoID) { (statistics) in
-			self.statistics = statistics
-			self.likeLabel.text = "\(statistics.totalLikes ?? 0)"
-			self.downloadsLabel.text = "\(statistics.totalDownloads ?? 0)"
-			self.viewsLabel.text = "\(statistics.totalViews ?? 0)"
-		}
 		
+		service.getStats(id: stats, completion: {(statistics) in
+			self.statistics = (statistics)
+			self.likeLabel.text = "likes: \(statistics.totalLikes ?? 0)"
+			self.downloadsLabel.text = "downloads: \(statistics.totalDownloads ?? 0)"
+			self.viewsLabel.text = "views: \(statistics.totalViews ?? 0)"
+			})
+
 		if let user = user {
 			detailBioLabel.text = user.bio
+		}
+		self.detailBioLabel.text = photo?.user?.bio
+		self.detailUserNameLabel.text = photo?.user?.username
+		if let profileImage = photo?.user?.medium {
+			let profileImageUrl = URL(string: profileImage)
+			self.detailUserProfileImageView.kf.setImage(with: profileImageUrl)
+		}
+		if let detailedImage = photo?.regular {
+			let detailedUrl = URL(string: detailedImage)
+			self.detailPhotoImageView.kf.setImage(with: detailedUrl)
 		}
 		
 		self.view.backgroundColor = UIColor.rgb(red: 35, green: 35, blue: 35)
@@ -76,6 +90,7 @@ class PhotoDetailViewController: UIViewController {
 		label.text = "user bio here"
 		label.textColor = .white
 		label.numberOfLines = 0
+		label.textAlignment = .center
 		return label
 	}()
 	
@@ -131,7 +146,7 @@ class PhotoDetailViewController: UIViewController {
 		detailPhotoImageView.widthAnchor.constraint(equalTo: detailPhotoImageView.heightAnchor, multiplier: 1).isActive = true
 		detailPhotoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
 		
-		detailBioLabel.anchor(top: detailPhotoImageView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+		detailBioLabel.anchor(top: detailPhotoImageView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 60, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
 		detailBioLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
 	}
 	

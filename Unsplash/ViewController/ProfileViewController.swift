@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController {
 		view.addSubview(friendsLabel)
 		view.addSubview(followersLabel)
 		view.addSubview(favoritesLabel)
-		view.addSubview(downloadsLabel)
+		view.addSubview(photosLabel)
 		profileUsernameLabel.text = userData
 		setupViews()
 		setupStackView()
@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFill
 		imageView.clipsToBounds = true
-		imageView.backgroundColor = .red
+		imageView.backgroundColor = .gray
 		return imageView
 	}()
 	
@@ -84,7 +84,7 @@ class ProfileViewController: UIViewController {
 		return label
 	}()
 	
-	let downloadsLabel: UILabel = {
+	let photosLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.systemFont(ofSize: 13)
 		label.text = "Photos: 522"
@@ -105,13 +105,12 @@ class ProfileViewController: UIViewController {
 		profileNameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
 		friendsLabel.anchor(top: nil, left: nil, bottom: followersLabel.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 8, paddingRight: 0, width: 0, height: 25)
 		followersLabel.anchor(top: nil, left: nil, bottom: favoritesLabel.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 8, paddingRight: 0, width: 0, height: 25)
-		favoritesLabel.anchor(top: nil, left: nil, bottom: downloadsLabel.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 8, paddingRight: 0, width: 0, height: 25)
-		downloadsLabel.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 25)
+		favoritesLabel.anchor(top: nil, left: nil, bottom: photosLabel.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 8, paddingRight: 0, width: 0, height: 25)
+		photosLabel.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 25)
 	}
 	
 	fileprivate func setupStackView() {
-		let stackView = UIStackView(arrangedSubviews: [friendsLabel, followersLabel, favoritesLabel, downloadsLabel])
-
+		let stackView = UIStackView(arrangedSubviews: [friendsLabel, followersLabel, favoritesLabel, photosLabel])
 //		stackView.distribution = .fillEqually
 		stackView.axis = .vertical
 		stackView.distribution = .equalSpacing
@@ -132,17 +131,15 @@ class ProfileViewController: UIViewController {
 			self.user = (userInfo)
 			self.profileUsernameLabel.text = userInfo.username
 			self.profileNameLabel.text = userInfo.name
-			self.followersLabel.text = "\(userInfo.followers_count ?? 0)"
-			self.friendsLabel.text = "\(userInfo.following_count ?? 0)"
-			self.favoritesLabel.text = "\(userInfo.likes ?? 0)"
-			self.downloadsLabel.text = "\(userInfo.downloads ?? 0)"
-			
+			self.followersLabel.text = "Followers: \(userInfo.followers_count ?? 0)"
+			self.friendsLabel.text = "Following: \(userInfo.following_count ?? 0)"
+			self.favoritesLabel.text = "Favorites: \(userInfo.likes ?? 0)"
+			self.photosLabel.text = "Photos: \(userInfo.total_photos ?? 0)"
 			
 			if let profileImage = userInfo.large {
 				let profileImageUrl = URL(string: profileImage)
 			self.profileImageView.kf.setImage(with: profileImageUrl)
 			}
-			
 		})
 	}
 	func setupNavigationItems() {

@@ -10,8 +10,8 @@ import UIKit
 import Kingfisher
 
 protocol PhotoCellDelegate {
-	func didTapProfile(profile: UIButton)
-	func didTapPhoto(image: UIImageView)
+	func didTapProfile(profile: String)
+	func didTapPhoto(photo: Photo, stats: String)
 }
 
 class PhotoCell: UICollectionViewCell {
@@ -20,9 +20,12 @@ class PhotoCell: UICollectionViewCell {
 	var profileViewController = ProfileViewController()
 	
 	var photo: Photo?
+	var statistics: String? = ""
+//	var statistics: Statistics?
+	var photoId: String?
 	
 	func setupData(photo: Photo?, delegate: PhotoCellDelegate) {
-
+		self.photo = photo
 		if let photImageUrl = photo?.regular {
 			let url = URL(string: photImageUrl)
 			photoImageView.kf.setImage(with: url)
@@ -120,28 +123,30 @@ class PhotoCell: UICollectionViewCell {
 		
 		let tap = UITapGestureRecognizer(target: self, action: #selector(imageDetailTapped))
 		photoImageView.addGestureRecognizer(tap)
-		
+	
 		//profileNameTapped()
 	}
 	
 	@objc func profilePress() {
-		cellDelegate?.didTapProfile(profile: userNameLabel)
-				if let selectedName = photo?.user?.username {
-				profileViewController.userData = selectedName
-				} else {
+		if let selectedName = photo?.user?.username {
+		cellDelegate?.didTapProfile(profile: selectedName)
+						} else {
 					print("error retrieving userName")
 				}
 		print("profile tapped")
 	}
 	
 	@objc func imageDetailTapped() {
-		cellDelegate?.didTapPhoto(image: photoImageView)
+		if let photo = photo, let stats = statistics {
+			cellDelegate?.didTapPhoto(photo: photo, stats: stats)
 		print("imageTapped")
+		} else {
+			print("error retrieving photoID")
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
 }
 

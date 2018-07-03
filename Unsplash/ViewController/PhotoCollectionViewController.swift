@@ -16,28 +16,23 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 	var photos: [Photo] = []
 	var profileViewController = ProfileViewController()
 	
-	func didTapPhoto(image: UIImageView) {
+	func didTapPhoto(photo: Photo, stats: String) {
 		let photoDetailViewController = PhotoDetailViewController()
-//		navigationController?.present(photoDetailViewController, animated: true)
 		navigationController?.pushViewController(photoDetailViewController, animated: true)
+		photoDetailViewController.photo = photo
+		photoDetailViewController.statistics?.id = stats
 		setupBackButton()
 	}
 	
-	func didTapProfile(profile: UIButton) {
+	func didTapProfile(profile: String) {
 		print("tap Profile")
 		let profileViewController = ProfileViewController()
 		navigationController?.pushViewController(profileViewController, animated: true)
 		navigationController?.navigationBar.prefersLargeTitles = false
-		
-//		if let selectedName = photo?.user?.username {
-//		profileViewController.userData = selectedName
-//		} else {
-//			print("error retrieving userName")
-//		}
-		
+		profileViewController.userData = profile
 		setupBackButton()
-		}
-	
+	}
+
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +93,6 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 		}
         return cell
     }
-	// Esto va aca?
 	private func loadNextPage() {
 		let service = PhotoService()
 		service.searchByQuery(query: query!, page: photos.count) { (photos) in
@@ -115,3 +109,4 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 	}
 
 }
+

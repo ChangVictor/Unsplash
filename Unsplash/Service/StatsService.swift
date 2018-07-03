@@ -18,5 +18,4 @@ class StatsService {
 			completion(response)
 		}
 	}
-	
 }
