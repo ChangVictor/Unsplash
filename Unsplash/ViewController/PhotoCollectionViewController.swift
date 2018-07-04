@@ -16,11 +16,11 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 	var photos: [Photo] = []
 	var profileViewController = ProfileViewController()
 	
-	func didTapPhoto(photo: Photo, stats: String) {
+	func didTapPhoto(photo: Photo) {
 		let photoDetailViewController = PhotoDetailViewController()
 		navigationController?.pushViewController(photoDetailViewController, animated: true)
 		photoDetailViewController.photo = photo
-		photoDetailViewController.statistics?.id = stats
+		photoDetailViewController.stats = photo.id
 		setupBackButton()
 	}
 	

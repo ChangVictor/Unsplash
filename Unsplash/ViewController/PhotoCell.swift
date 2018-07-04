@@ -11,7 +11,7 @@ import Kingfisher
 
 protocol PhotoCellDelegate {
 	func didTapProfile(profile: String)
-	func didTapPhoto(photo: Photo, stats: String)
+	func didTapPhoto(photo: Photo)
 }
 
 class PhotoCell: UICollectionViewCell {
@@ -137,8 +137,8 @@ class PhotoCell: UICollectionViewCell {
 	}
 	
 	@objc func imageDetailTapped() {
-		if let photo = photo, let stats = statistics {
-			cellDelegate?.didTapPhoto(photo: photo, stats: stats)
+		if let photo = photo {
+			cellDelegate?.didTapPhoto(photo: photo)
 		print("imageTapped")
 		} else {
 			print("error retrieving photoID")

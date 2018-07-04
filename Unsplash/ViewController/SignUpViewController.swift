@@ -9,7 +9,41 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+	
+	let plusPhotoButton: UIButton = {
+		let button = UIButton(type: .system)
+//		button.setImage(<#T##image: UIImage?##UIImage?#>, for: .normal)
+		button.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
+		return button
+	}()
+	
+	@objc func handlePlusPhoto() {
+		// set imagePickerViewCOntroller
+	}
+	
+	let emailTextField: UITextField = {
+		let textField = UITextField()
+		textField.placeholder = "Email"
+		textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+		textField.borderStyle = .roundedRect
+		textField.font = UIFont.systemFont(ofSize: 14)
+		return textField
+	}()
+	
+	let usernameTextField: UITextField = {
+		let textField = UITextField()
+		textField.placeholder = "Username"
+		textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+		textField.borderStyle = .roundedRect
+		textField.font = UIFont.systemFont(ofSize: 14)
+		textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+		return textField
+	}()
+	
+	@objc func handleTextInputChange() {
+		// settear 
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -126,7 +126,6 @@ class ProfileViewController: UIViewController {
 	func setupProfileData() {
 
 		let userService = UserService()
-		
 		userService.getUser(username: userData, completion: { (userInfo) in
 			self.user = (userInfo)
 			self.profileUsernameLabel.text = userInfo.username

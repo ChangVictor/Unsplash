@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C4B5AEE7B59B32AF52C6846 /* Pods_Unsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88B81C73175D9C8B4F224AB /* Pods_Unsplash.framework */; };
+		EF14883F20ECFCBE00FE8A27 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF14883E20ECFCBE00FE8A27 /* LoginViewController.swift */; };
+		EF14884120ECFD5E00FE8A27 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF14884020ECFD5E00FE8A27 /* SignUpViewController.swift */; };
 		EF39E67E20DF112500E577AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E67D20DF112500E577AC /* AppDelegate.swift */; };
 		EF39E68020DF112500E577AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E67F20DF112500E577AC /* ViewController.swift */; };
 		EF39E68320DF112500E577AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF39E68120DF112500E577AC /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 		3C754ADDCB6110580E5B2AFE /* Pods-Unsplash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unsplash/Pods-Unsplash.release.xcconfig"; sourceTree = "<group>"; };
 		62960949DC243EC8B79A9219 /* Pods-Unsplash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unsplash/Pods-Unsplash.debug.xcconfig"; sourceTree = "<group>"; };
 		B88B81C73175D9C8B4F224AB /* Pods_Unsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF14883E20ECFCBE00FE8A27 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EF14884020ECFD5E00FE8A27 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EF39E67A20DF112500E577AC /* Unsplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF39E67D20DF112500E577AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF39E67F20DF112500E577AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				EFF6D5D220E077B400A04584 /* PhotoCell.swift */,
 				EFCB3B7320E4084B00AAF6C4 /* ProfileViewController.swift */,
 				EFACE9B120E44DDA003D1BF5 /* PhotoDetailViewController.swift */,
+				EF14883E20ECFCBE00FE8A27 /* LoginViewController.swift */,
+				EF14884020ECFD5E00FE8A27 /* SignUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -303,12 +309,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF14883F20ECFCBE00FE8A27 /* LoginViewController.swift in Sources */,
 				EF9C6E8920E9A15600A15C7E /* StatsService.swift in Sources */,
 				EF6BB11A20E2D9CE00EBF716 /* Statistics.swift in Sources */,
 				EF39E69920DF19BA00E577AC /* Photo.swift in Sources */,
 				EFF6D5D320E077B400A04584 /* PhotoCell.swift in Sources */,
 				EFACE9B220E44DDA003D1BF5 /* PhotoDetailViewController.swift in Sources */,
 				EF58F13320E26C030075BED9 /* UserDataAcces.swift in Sources */,
+				EF14884120ECFD5E00FE8A27 /* SignUpViewController.swift in Sources */,
 				EFCB3B7420E4084B00AAF6C4 /* ProfileViewController.swift in Sources */,
 				EF39E68020DF112500E577AC /* ViewController.swift in Sources */,
 				EFF6D5C920DFB82500A04584 /* Extension.swift in Sources */,

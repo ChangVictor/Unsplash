@@ -10,7 +10,7 @@ import Foundation
 
 class Photo {
 	
-	var id: String?
+	var id: String
 	var created_at: String?
 	var updated_at: String?
 	var width: Int?
